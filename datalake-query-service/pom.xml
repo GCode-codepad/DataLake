@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 1) Inherit from the multi‑module parent -->
+    <parent>
+        <groupId>com.yuqiguo.datalake</groupId>
+        <artifactId>datalake-parent</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../datalake-parent/pom.xml</relativePath>
+    </parent>
+
+    <!-- 2) Module coordinates -->
+    <artifactId>datalake-query-service</artifactId>
+    <name>datalake-query-service</name>
+    <description>Query service for Data Lake: Athena 查询、分页、CTAS 导出、预签名下载</description>
+
+    <properties>
+        <!-- java.version is inherited from parent -->
+    </properties>
+
+    <dependencies>
+        <!-- shared DTOs, Avro schema, IcebergWriter, etc. -->
+        <dependency>
+            <groupId>com.yuqiguo.datalake</groupId>
+            <artifactId>datalake-common</artifactId>
+        </dependency>
+
+        <!-- expose REST endpoints -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- AWS Athena client for querying and CTAS -->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-athena</artifactId>
+            <version>1.12.569</version>
+        </dependency>
+
+        <!-- pagination utilities (Spring Data Commons) -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+        </dependency>
+
+        <!-- S3 SDK (for presigned URL generation) is already in datalake-common -->
+
+        <!-- testing -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- use compiler settings (Java 17 + Lombok) from parent pluginManagement -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
+            <!-- Spring Boot executable JAR -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
