@@ -37,6 +37,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- WebFlux support for reactive ingestion -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+
         <!-- Spring Kafka -->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
@@ -48,6 +54,27 @@
             <groupId>io.projectreactor.kafka</groupId>
             <artifactId>reactor-kafka</artifactId>
             <version>${reactor-kafka.version}</version>
+        </dependency>
+
+        <!-- Iceberg core (AWS Glue catalog integration) -->
+        <dependency>
+            <groupId>org.apache.iceberg</groupId>
+            <artifactId>iceberg-aws</artifactId>
+            <version>1.4.2</version>
+        </dependency>
+
+        <!-- Iceberg Parquet format support -->
+        <dependency>
+            <groupId>org.apache.iceberg</groupId>
+            <artifactId>iceberg-parquet</artifactId>
+            <version>1.4.2</version>
+        </dependency>
+
+        <!-- Hadoop S3A FileSystem support -->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-aws</artifactId>
+            <version>3.3.6</version>
         </dependency>
 
         <!-- Test helpers -->
